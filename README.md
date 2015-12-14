@@ -73,7 +73,7 @@ In order, to not bind the broadcast address and wildcard address, we deleted the
 * The receiver advertises the current RWND size to the sender when it sends the ACK. When the receive window becomes full, the receiver sends a duplicate ACK which acts as a window update when the receive buffer becomes free again. There are chances that this ACK might get lost and since this might cause a deadlock, a persist timer is implemented at the sender which causes the process to sleep for certain duration in the range of 1 to 60 seconds (each time doubling the time starting if the receive window still doesn’t open up after waking up from the sleep, starting with 1 sec). When the sender process wakes up, it sends probe signal and goes to sleep again. This continues until an ACK is received with RWND greater than zero. 
 
 
- 4. Congestion Control
+4.Congestion Control
 
 To implement the congestion control, four state parameters were used namely: current_state, cwnd, ssthreshold, dup_ack_count
 
@@ -92,6 +92,7 @@ Note that we have covered a special case here, when the first packet with data i
 
 *	There are chances that the last ACK sent by the client may be lost. To ensure clean closing of the connection between the sender and the receiver, a TIME_WAIT state is implemented at the receiver where in it waits for a certain duration after sending an ACK for the EOF datagram and doesn’t terminate immediately in case it has to retransmit the final ACK. After this duration, the receiver process exits.
 
- 6. Testing
+
+6.Testing
 
 We tested our client and server implementation with different sizes of file, different probability of datagram loss and different sizes of sending and receiving buffers. The results were as expected and the design worked for all the cases.
