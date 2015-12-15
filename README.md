@@ -1,5 +1,5 @@
 # FTP-with-Reliable-UDP
-Authors:  Gagan Nagaraju (109889036) & Harishkumar Katagal(109915793) 
+Authors:  Gagan Nagaraju & Harishkumar Katagal 
 CSE 533 - Assignment 2
 ********************************************************************************************
 # USER DOCUMENTATION:
